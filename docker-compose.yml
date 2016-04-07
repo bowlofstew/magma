@@ -1,0 +1,21 @@
+magma:
+  build: .
+  ports:
+    - "80:80"
+    - "443:443"
+    - "9000:9000"
+  links:
+    - mysql:mysql
+    - memcached:memcached
+
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+
+memcached:
+  image: memcached
+  ports:
+    - "11211:11211"
